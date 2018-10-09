@@ -1,8 +1,48 @@
 package modelo;
 
+import java.awt.Color;
 import java.util.Stack;
 
-public class Main {
+import javax.swing.JFrame;
+
+public class Main extends JFrame {
+
+	private int xInicio;
+	private int yInicio;
+	private int xFin;
+	private int yFin;
+	private int xInicio2;
+	private int yInicio2;
+	private int xFin2;
+	private int yFin2;
+	private Color color;
+	
+	public Main() {
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		xInicio = 100;
+		xFin = 800;
+		yInicio = 200;
+		yFin = 100;
+		xInicio2 = 100;
+		xFin2 = 800;
+		yInicio2 = 200;
+		yFin2 = 100;
+		color = new Color(200, 100, 50);
+		mover();
+	}
+
+	public void mover() {
+		for (; xInicio2 <= xFin2; xInicio2++) {
+			try {
+				Thread.sleep(20);
+			} catch (Exception e) {
+
+			}
+			repaint();
+		}
+	}
 
 	public static void main(String... arg) {
 		// "Enter number of disks:
@@ -23,13 +63,16 @@ public class Main {
 	}
 
 	public static void moveDisk(int n, int num, int i, int j, int k, Stack<Integer>[] TOH) {
+
 		if (num > 0) {
+
 			moveDisk(n, num - 1, i, k, j, TOH);
 			int m = TOH[i].pop();
 			TOH[k].push(m);
 			display(n, TOH);
 			moveDisk(n, num - 1, j, i, k, TOH);
 		}
+
 	}
 
 	public static void display(int n, Stack<Integer>[] TOH) {

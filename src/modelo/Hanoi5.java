@@ -16,12 +16,13 @@ public class Hanoi5 {
 		Hanoii hanoi = new Hanoii(height);
 		hanoi.printTowers();
 		hanoi.solve(height, 0, 1, 2);
+		s.close();
 	}
 }
 
-public class Hanoii {
+class Hanoii {
 	protected int[][] towers;
-	public static int height;
+	private int height;
 
 	public Hanoii(int height) {
 		this.height = height;
